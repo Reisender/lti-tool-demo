@@ -22,6 +22,8 @@ import (
 	"github.com/joho/godotenv"
 )
 
+//go:generate templ generate
+
 // Configuration for LTI Tool
 type Config struct {
 	Issuer             string
