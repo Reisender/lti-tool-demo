@@ -1,0 +1,352 @@
+/* Ednition Branding CSS - Matching ednition.com */
+:root {
+  /* Primary brand colors */
+  --ednition-primary: #007eac; /* Blue */
+  --ednition-secondary: #3dd5f3; /* Light blue */
+  --ednition-tertiary: #4d8fcc; /* Medium blue */
+  --ednition-accent: #ff9100; /* Orange */
+  
+  /* Background colors */
+  --ednition-bg-light: #f8fafc;
+  --ednition-bg-white: #ffffff;
+  --ednition-bg-dark: #1c2951;
+  
+  /* Text colors */
+  --ednition-text-dark: #1c2951;
+  --ednition-text-medium: #4b5563;
+  --ednition-text-light: #6b7280;
+  
+  /* Neutrals */
+  --ednition-neutral-100: #f3f4f6;
+  --ednition-neutral-200: #e5e7eb;
+  --ednition-neutral-300: #d1d5db;
+  
+  /* Success/error states */
+  --ednition-success: #10b981;
+  --ednition-error: #ef4444;
+  --ednition-warning: #f59e0b;
+  --ednition-info: #3b82f6;
+
+  /* Font settings */
+  --ednition-font-primary: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --ednition-font-heading: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  
+  /* Spacing */
+  --ednition-spacing-xs: 4px;
+  --ednition-spacing-sm: 8px;
+  --ednition-spacing-md: 16px;
+  --ednition-spacing-lg: 24px;
+  --ednition-spacing-xl: 32px;
+  --ednition-spacing-xxl: 48px;
+  
+  /* Border radius */
+  --ednition-radius-sm: 4px;
+  --ednition-radius-md: 8px;
+  --ednition-radius-lg: 12px;
+  --ednition-radius-full: 9999px;
+  
+  /* Box shadow */
+  --ednition-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ednition-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --ednition-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Base styles */
+body.ednition-theme {
+  font-family: var(--ednition-font-primary);
+  background-color: var(--ednition-bg-light);
+  color: var(--ednition-text-medium);
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ednition-font-heading);
+  color: var(--ednition-text-dark);
+  font-weight: 600;
+  margin-top: 0;
+  line-height: 1.3;
+}
+
+h1 {
+  font-size: 2.25rem;
+  margin-bottom: var(--ednition-spacing-md);
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-bottom: var(--ednition-spacing-md);
+  color: var(--ednition-primary);
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: var(--ednition-spacing-sm);
+  color: var(--ednition-text-dark);
+}
+
+p {
+  margin-bottom: var(--ednition-spacing-md);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+a {
+  color: var(--ednition-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--ednition-secondary);
+  text-decoration: underline;
+}
+
+/* Import Poppins font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Header */
+.ednition-header {
+  background-color: var(--ednition-bg-white);
+  border-bottom: 1px solid var(--ednition-neutral-200);
+  padding: var(--ednition-spacing-md) 0;
+  box-shadow: var(--ednition-shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ednition-spacing-lg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  margin-right: var(--ednition-spacing-lg);
+}
+
+.header-title h1 {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ednition-text-dark);
+}
+
+/* Main content */
+.ednition-main {
+  flex: 1;
+  padding: var(--ednition-spacing-xl) 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ednition-spacing-lg);
+}
+
+/* Footer */
+.ednition-footer {
+  background-color: var(--ednition-bg-dark);
+  color: white;
+  padding: var(--ednition-spacing-lg) 0;
+  margin-top: auto;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--ednition-spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-text {
+  text-align: right;
+}
+
+.footer-text p {
+  margin: var(--ednition-spacing-xs) 0;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Sections */
+.welcome-section {
+  text-align: center;
+  margin-bottom: var(--ednition-spacing-xxl);
+  position: relative;
+}
+
+.welcome-section:after {
+  content: '';
+  position: absolute;
+  bottom: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--ednition-primary), var(--ednition-secondary));
+  border-radius: var(--ednition-radius-full);
+}
+
+.info-section {
+  background-color: var(--ednition-bg-white);
+  border-radius: var(--ednition-radius-md);
+  padding: var(--ednition-spacing-xl);
+  margin-bottom: var(--ednition-spacing-xl);
+  box-shadow: var(--ednition-shadow-md);
+  border-top: 4px solid var(--ednition-primary);
+}
+
+.welcome-user {
+  background-color: var(--ednition-bg-white);
+  border-radius: var(--ednition-radius-md);
+  padding: var(--ednition-spacing-xl);
+  text-align: center;
+  box-shadow: var(--ednition-shadow-md);
+  border-top: 4px solid var(--ednition-primary);
+}
+
+/* User info */
+.user-info {
+  background-color: var(--ednition-neutral-100);
+  border-radius: var(--ednition-radius-md);
+  padding: var(--ednition-spacing-xl);
+  margin: var(--ednition-spacing-lg) 0;
+}
+
+.role-badge {
+  display: inline-block;
+  background-color: var(--ednition-primary);
+  color: white;
+  font-size: 0.875rem;
+  padding: var(--ednition-spacing-xs) var(--ednition-spacing-md);
+  border-radius: var(--ednition-radius-full);
+  font-weight: 500;
+}
+
+/* Button */
+.ednition-btn {
+  display: inline-block;
+  background-color: var(--ednition-primary);
+  color: white;
+  font-weight: 500;
+  padding: var(--ednition-spacing-md) var(--ednition-spacing-xl);
+  border-radius: var(--ednition-radius-full);
+  border: none;
+  cursor: pointer;
+  font-family: var(--ednition-font-primary);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  margin: var(--ednition-spacing-md) 0;
+  box-shadow: var(--ednition-shadow-sm);
+}
+
+.ednition-btn:hover {
+  background-color: #006990;
+  text-decoration: none;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--ednition-shadow-md);
+}
+
+.ednition-btn:active {
+  transform: translateY(0);
+}
+
+/* LTI URL display */
+.lti-url {
+  background-color: var(--ednition-neutral-100);
+  border: 1px solid var(--ednition-neutral-300);
+  border-radius: var(--ednition-radius-sm);
+  padding: var(--ednition-spacing-md);
+  margin: var(--ednition-spacing-md) 0;
+  word-break: break-all;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+/* Note boxes */
+.note {
+  background-color: rgba(0, 126, 172, 0.05);
+  border-left: 4px solid var(--ednition-primary);
+  padding: var(--ednition-spacing-md);
+  margin: var(--ednition-spacing-md) 0;
+  border-radius: 0 var(--ednition-radius-sm) var(--ednition-radius-sm) 0;
+}
+
+/* Lists */
+ul, ol {
+  padding-left: 1.5rem;
+  margin-bottom: var(--ednition-spacing-lg);
+}
+
+li {
+  margin-bottom: var(--ednition-spacing-sm);
+  line-height: 1.6;
+}
+
+/* Code snippets */
+code {
+  background-color: var(--ednition-neutral-100);
+  padding: 0.1rem 0.3rem;
+  border-radius: var(--ednition-radius-sm);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  color: var(--ednition-primary);
+}
+
+/* Message container */
+.message-container {
+  margin-top: var(--ednition-spacing-lg);
+  min-height: 30px;
+}
+
+.greeting-message {
+  background-color: var(--ednition-neutral-100);
+  border-radius: var(--ednition-radius-md);
+  padding: var(--ednition-spacing-lg);
+  border-left: 4px solid var(--ednition-primary);
+  text-align: left;
+}
+
+.greeting-message h3 {
+  color: var(--ednition-primary);
+  margin-top: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .header-content, .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .logo, .footer-logo {
+    margin-right: 0;
+    margin-bottom: var(--ednition-spacing-md);
+  }
+  
+  .footer-text {
+    text-align: center;
+  }
+  
+  .container {
+    padding: 0 var(--ednition-spacing-md);
+  }
+  
+  .info-section {
+    padding: var(--ednition-spacing-md);
+  }
+} 

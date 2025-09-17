@@ -1,0 +1,641 @@
+package components
+
+import (
+	"fmt"
+)
+
+type WelcomeData struct {
+	Name string
+	Role string
+	LaunchInfo map[string]interface{}
+}
+
+// Helper to get the current year as a string
+func currentYear() string {
+	return "2024"
+}
+
+// Logo SVG components
+templ EdnitionLogo() {
+	<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="250" height="61.063" viewBox="0 0 250 61.063" style="height: 40px; width: auto;">
+		<defs>
+			<clipPath id="clip-path">
+				<rect id="Rectangle_9" data-name="Rectangle 9" width="250" height="61.063" fill="#007eac"/>
+			</clipPath>
+		</defs>
+		<g id="Group_1" data-name="Group 1" transform="translate(0 0)">
+			<g id="Group_14" data-name="Group 14" transform="translate(0 0)" clip-path="url(#clip-path)">
+				<path id="Path_14" data-name="Path 14" d="M60.433,37.384c-7.043,0-12.112-4.723-12.112-12.327S53.3,12.731,60.433,12.731c7,0,11.94,4.64,11.94,11.941a18.855,18.855,0,0,1-.129,2.147H55.623c.258,3.134,2.19,4.6,4.552,4.6A3.9,3.9,0,0,0,64,29.094h7.816c-1.159,4.681-5.411,8.29-11.38,8.29M55.664,22.739h9.192c0-2.62-2.061-4.123-4.511-4.123a4.543,4.543,0,0,0-4.681,4.123" transform="translate(23.376 6.159)" fill="#007eac"/>
+				<path id="Path_15" data-name="Path 15" d="M76.721,15.168a8.8,8.8,0,0,1,7.386,3.65V7.694H91.45V39.476H84.107V36.041a8.291,8.291,0,0,1-7.386,3.779c-5.885,0-10.566-4.81-10.566-12.369s4.681-12.284,10.566-12.284m2.147,6.4c-2.749,0-5.241,2.062-5.241,5.885s2.491,5.969,5.241,5.969c2.791,0,5.239-2.105,5.239-5.928s-2.448-5.926-5.239-5.926" transform="translate(32.003 3.722)" fill="#007eac"/>
+				<path id="Path_16" data-name="Path 16" d="M102.752,24c0-3.264-1.8-5.069-4.6-5.069s-4.6,1.8-4.6,5.069V37.013H86.217V13.047h7.345v3.178a8.784,8.784,0,0,1,7.259-3.436c5.54,0,9.233,3.779,9.233,10.222v14h-7.3Z" transform="translate(41.708 6.187)" fill="#007eac"/>
+				<path id="Path_17" data-name="Path 17" d="M104.687,9.922a4.377,4.377,0,0,1,8.72,0,4.381,4.381,0,0,1-8.72,0m.688,6.444h7.343V40.33h-7.343Z" transform="translate(50.643 2.868)" fill="#007eac"/>
+				<path id="Path_18" data-name="Path 18" d="M116,20.966h-2.922v-6.1H116V9.025h7.345v5.843h4.809v6.1h-4.809v9.619c0,1.417.6,2.019,2.233,2.019h2.62v6.227h-3.738c-4.981,0-8.46-2.1-8.46-8.331Z" transform="translate(54.705 4.366)" fill="#007eac"/>
+				<path id="Path_19" data-name="Path 19" d="M126.14,9.922a4.377,4.377,0,0,1,8.72,0,4.381,4.381,0,0,1-8.72,0m.688,6.444h7.343V40.33h-7.343Z" transform="translate(61.021 2.868)" fill="#007eac"/>
+				<path id="Path_20" data-name="Path 20" d="M145.949,37.384c-7.043,0-12.369-4.723-12.369-12.326s5.454-12.327,12.456-12.327c7.043,0,12.453,4.726,12.453,12.327s-5.5,12.326-12.541,12.326m0-6.356c2.622,0,5.068-1.933,5.068-5.969,0-4.08-2.405-5.971-4.981-5.971-2.663,0-4.984,1.89-4.984,5.971,0,4.036,2.235,5.969,4.9,5.969" transform="translate(64.62 6.159)" fill="#007eac"/>
+				<path id="Path_21" data-name="Path 21" d="M168.961,24c0-3.264-1.8-5.069-4.6-5.069s-4.6,1.8-4.6,5.069V37.013h-7.345V13.047h7.345v3.178a8.784,8.784,0,0,1,7.259-3.436c5.542,0,9.235,3.779,9.235,10.222v14h-7.3Z" transform="translate(73.737 6.187)" fill="#007eac"/>
+				<path id="Path_22" data-name="Path 22" d="M23.635,43.146V29.3H8.73L31.246,6.782V19.188H47.593L35.245,31.536H61.037c.01-.334.025-.668.025-1a30.537,30.537,0,1,0-2.73,12.615Z" transform="translate(0 0)" fill="#ff9100"/>
+			</g>
+		</g>
+	</svg>
+}
+
+templ EdnitionLogoSmall() {
+	<svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="height: 24px; width: auto;">
+		<!-- Blue background rectangle -->
+		<rect width="24" height="24" rx="4" fill="#007eac"/>
+		
+		<!-- Letter "e" stylized -->
+		<path d="M6.6 12C6.6 8.7 9.3 6 12.6 6C15.9 6 18 8.7 18 12" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+		<path d="M6.6 12H18" stroke="white" stroke-width="2.4" stroke-linecap="round"/>
+		<path d="M6.6 12C6.6 15.3 9.3 18 12.6 18C15.9 18 18 15.3 18 12" stroke="#3dd5f3" stroke-width="2.4" stroke-linecap="round"/>
+		
+		<!-- Text "ednition" -->
+		<path d="M30 9H32.4V16.2H30V9ZM33 9H39C39.66 9 40.2 9.54 40.2 10.2V16.2H37.8V11.4H35.4V16.2H33V9ZM41.4 9H47.4C48.06 9 48.6 9.54 48.6 10.2V15C48.6 15.66 48.06 16.2 47.4 16.2H41.4V9ZM43.8 11.4V13.8H46.2V11.4H43.8ZM49.8 9H56.4C57.06 9 57.6 9.54 57.6 10.2V15C57.6 15.66 57.06 16.2 56.4 16.2H49.8V9ZM52.2 11.4V13.8H54.6V11.4H52.2ZM58.2 9H60.6V16.2H58.2V9ZM61.8 9H67.8C68.46 9 69 9.54 69 10.2V16.2H66.6V11.4H64.2V16.2H61.8V9ZM70.2 9H76.2C76.86 9 77.4 9.54 77.4 10.2V15C77.4 15.66 76.86 16.2 76.2 16.2H70.2V9ZM72.6 11.4V13.8H75V11.4H72.6Z" fill="white"/>
+	</svg>
+}
+
+// CSS component that renders the Ednition CSS inline
+templ InlineCSS() {
+	<style>
+		/* Ednition Branding CSS - Matching ednition.com */
+		:root {
+		/* Primary brand colors */
+		--ednition-primary: #007eac; /* Blue */
+		--ednition-secondary: #3dd5f3; /* Light blue */
+		--ednition-tertiary: #4d8fcc; /* Medium blue */
+		--ednition-accent: #ff9100; /* Orange */
+		
+		/* Background colors */
+		--ednition-bg-light: #f8fafc;
+		--ednition-bg-white: #ffffff;
+		--ednition-bg-dark: #1c2951;
+		
+		/* Text colors */
+		--ednition-text-dark: #1c2951;
+		--ednition-text-medium: #4b5563;
+		--ednition-text-light: #6b7280;
+		
+		/* Neutrals */
+		--ednition-neutral-100: #f3f4f6;
+		--ednition-neutral-200: #e5e7eb;
+		--ednition-neutral-300: #d1d5db;
+		
+		/* Success/error states */
+		--ednition-success: #10b981;
+		--ednition-error: #ef4444;
+		--ednition-warning: #f59e0b;
+		--ednition-info: #3b82f6;
+
+		/* Font settings */
+		--ednition-font-primary: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+		--ednition-font-heading: 'Poppins', 'Segoe UI', system-ui, -apple-system, sans-serif;
+		
+		/* Spacing */
+		--ednition-spacing-xs: 4px;
+		--ednition-spacing-sm: 8px;
+		--ednition-spacing-md: 16px;
+		--ednition-spacing-lg: 24px;
+		--ednition-spacing-xl: 32px;
+		--ednition-spacing-xxl: 48px;
+		
+		/* Border radius */
+		--ednition-radius-sm: 4px;
+		--ednition-radius-md: 8px;
+		--ednition-radius-lg: 12px;
+		--ednition-radius-full: 9999px;
+		
+		/* Box shadow */
+		--ednition-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+		--ednition-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+		--ednition-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+		}
+
+		/* Base styles */
+		body.ednition-theme {
+		font-family: var(--ednition-font-primary);
+		background-color: var(--ednition-bg-light);
+		color: var(--ednition-text-medium);
+		margin: 0;
+		padding: 0;
+		line-height: 1.6;
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+		}
+
+		h1, h2, h3, h4, h5, h6 {
+		font-family: var(--ednition-font-heading);
+		color: var(--ednition-text-dark);
+		font-weight: 600;
+		margin-top: 0;
+		line-height: 1.3;
+		}
+
+		h1 {
+		font-size: 2.25rem;
+		margin-bottom: var(--ednition-spacing-md);
+		}
+
+		h2 {
+		font-size: 1.75rem;
+		margin-bottom: var(--ednition-spacing-md);
+		color: var(--ednition-primary);
+		}
+
+		h3 {
+		font-size: 1.5rem;
+		margin-bottom: var(--ednition-spacing-sm);
+		color: var(--ednition-text-dark);
+		}
+
+		p {
+		margin-bottom: var(--ednition-spacing-md);
+		font-size: 1rem;
+		line-height: 1.7;
+		}
+
+		a {
+		color: var(--ednition-primary);
+		text-decoration: none;
+		transition: color 0.2s ease;
+		}
+
+		a:hover {
+		color: var(--ednition-secondary);
+		text-decoration: underline;
+		}
+
+		/* Import Poppins font */
+		@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+		/* Header */
+		.ednition-header {
+		background-color: var(--ednition-bg-white);
+		border-bottom: 1px solid var(--ednition-neutral-200);
+		padding: var(--ednition-spacing-md) 0;
+		box-shadow: var(--ednition-shadow-sm);
+		position: sticky;
+		top: 0;
+		z-index: 100;
+		}
+
+		.header-content {
+		display: flex;
+		align-items: center;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--ednition-spacing-lg);
+		}
+
+		.logo {
+		display: flex;
+		align-items: center;
+		margin-right: var(--ednition-spacing-lg);
+		}
+
+		.header-title h1 {
+		margin: 0;
+		font-size: 1.25rem;
+		font-weight: 600;
+		color: var(--ednition-text-dark);
+		}
+
+		/* Main content */
+		.ednition-main {
+		flex: 1;
+		padding: var(--ednition-spacing-xl) 0;
+		}
+
+		.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--ednition-spacing-lg);
+		}
+
+		/* Footer */
+		.ednition-footer {
+		background-color: var(--ednition-bg-dark);
+		color: white;
+		padding: var(--ednition-spacing-lg) 0;
+		margin-top: auto;
+		}
+
+		.footer-content {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 var(--ednition-spacing-lg);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		}
+
+		.footer-text {
+		text-align: right;
+		}
+
+		.footer-text p {
+		margin: var(--ednition-spacing-xs) 0;
+		font-size: 0.875rem;
+		color: rgba(255, 255, 255, 0.8);
+		}
+
+		/* Sections */
+		.welcome-section {
+		text-align: center;
+		margin-bottom: var(--ednition-spacing-xxl);
+		position: relative;
+		}
+
+		.welcome-section:after {
+		content: '';
+		position: absolute;
+		bottom: -24px;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100px;
+		height: 4px;
+		background: linear-gradient(90deg, var(--ednition-primary), var(--ednition-secondary));
+		border-radius: var(--ednition-radius-full);
+		}
+
+		.info-section {
+		background-color: var(--ednition-bg-white);
+		border-radius: var(--ednition-radius-md);
+		padding: var(--ednition-spacing-xl);
+		margin-bottom: var(--ednition-spacing-xl);
+		box-shadow: var(--ednition-shadow-md);
+		border-top: 4px solid var(--ednition-primary);
+		}
+
+		.welcome-user {
+		background-color: var(--ednition-bg-white);
+		border-radius: var(--ednition-radius-md);
+		padding: var(--ednition-spacing-xl);
+		text-align: center;
+		box-shadow: var(--ednition-shadow-md);
+		border-top: 4px solid var(--ednition-primary);
+		}
+
+		/* User info */
+		.user-info {
+		background-color: var(--ednition-neutral-100);
+		border-radius: var(--ednition-radius-md);
+		padding: var(--ednition-spacing-xl);
+		margin: var(--ednition-spacing-lg) 0;
+		}
+
+		.role-badge {
+		display: inline-block;
+		background-color: var(--ednition-primary);
+		color: white;
+		font-size: 0.875rem;
+		padding: var(--ednition-spacing-xs) var(--ednition-spacing-md);
+		border-radius: var(--ednition-radius-full);
+		font-weight: 500;
+		}
+
+		/* Button */
+		.ednition-btn {
+		display: inline-block;
+		background-color: var(--ednition-primary);
+		color: white;
+		font-weight: 500;
+		padding: var(--ednition-spacing-md) var(--ednition-spacing-xl);
+		border-radius: var(--ednition-radius-full);
+		border: none;
+		cursor: pointer;
+		font-family: var(--ednition-font-primary);
+		font-size: 1rem;
+		transition: all 0.2s ease;
+		text-decoration: none;
+		margin: var(--ednition-spacing-md) 0;
+		box-shadow: var(--ednition-shadow-sm);
+		}
+
+		.ednition-btn:hover {
+		background-color: #006990;
+		text-decoration: none;
+		color: white;
+		transform: translateY(-2px);
+		box-shadow: var(--ednition-shadow-md);
+		}
+
+		.ednition-btn:active {
+		transform: translateY(0);
+		}
+
+		/* LTI URL display */
+		.lti-url {
+		background-color: var(--ednition-neutral-100);
+		border: 1px solid var(--ednition-neutral-300);
+		border-radius: var(--ednition-radius-sm);
+		padding: var(--ednition-spacing-md);
+		margin: var(--ednition-spacing-md) 0;
+		word-break: break-all;
+		font-family: 'Courier New', monospace;
+		font-size: 0.875rem;
+		}
+
+		/* Note boxes */
+		.note {
+		background-color: rgba(0, 126, 172, 0.05);
+		border-left: 4px solid var(--ednition-primary);
+		padding: var(--ednition-spacing-md);
+		margin: var(--ednition-spacing-md) 0;
+		border-radius: 0 var(--ednition-radius-sm) var(--ednition-radius-sm) 0;
+		}
+
+		/* Lists */
+		ul, ol {
+		padding-left: 1.5rem;
+		margin-bottom: var(--ednition-spacing-lg);
+		}
+
+		li {
+		margin-bottom: var(--ednition-spacing-sm);
+		line-height: 1.6;
+		}
+
+		/* Code snippets */
+		code {
+		background-color: var(--ednition-neutral-100);
+		padding: 0.1rem 0.3rem;
+		border-radius: var(--ednition-radius-sm);
+		font-family: 'Courier New', monospace;
+		font-size: 0.875rem;
+		color: var(--ednition-primary);
+		}
+
+		/* Message container */
+		.message-container {
+		margin-top: var(--ednition-spacing-lg);
+		min-height: 30px;
+		}
+
+		.greeting-message {
+		background-color: var(--ednition-neutral-100);
+		border-radius: var(--ednition-radius-md);
+		padding: var(--ednition-spacing-lg);
+		border-left: 4px solid var(--ednition-primary);
+		text-align: left;
+		}
+
+		.greeting-message h3 {
+		color: var(--ednition-primary);
+		margin-top: 0;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+		.header-content, .footer-content {
+			flex-direction: column;
+			text-align: center;
+		}
+		
+		.logo, .footer-logo {
+			margin-right: 0;
+			margin-bottom: var(--ednition-spacing-md);
+		}
+		
+		.footer-text {
+			text-align: center;
+		}
+		
+		.container {
+			padding: 0 var(--ednition-spacing-md);
+		}
+		
+		.info-section {
+			padding: var(--ednition-spacing-md);
+		}
+		}
+	</style>
+}
+
+// Shared header component with Ednition branding
+templ Header() {
+	<header class="ednition-header">
+		<div class="header-content">
+			<div class="logo">
+				@EdnitionLogo()
+			</div>
+			<div class="header-title">
+				<h1>LTI Tool Demo</h1>
+			</div>
+		</div>
+	</header>
+}
+
+// Shared footer component with Ednition branding
+templ Footer() {
+	<footer class="ednition-footer">
+		<div class="footer-content">
+			<div class="footer-logo">
+				@EdnitionLogoSmall()
+			</div>
+			<div class="footer-text">
+				<p>© { currentYear() } Ednition. All rights reserved.</p>
+				<p>Empowering education through technology</p>
+			</div>
+		</div>
+	</footer>
+}
+
+// HomePage component for the root URL
+templ HomePage() {
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Ednition LTI Tool Demo</title>
+		<script src="https://unpkg.com/htmx.org@1.9.6"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		@InlineCSS()
+	</head>
+	<body class="ednition-theme">
+		@Header()
+		
+		<main class="ednition-main">
+			<div class="container">
+				<div class="welcome-section">
+					<h2>Welcome to Ednition LTI Tool</h2>
+					<p>A simple implementation of an LTI 1.3 Tool Provider using Go, HTMX, and Templ.</p>
+				</div>
+				
+				<div class="info-section">
+					<h2>LTI Configuration</h2>
+					<p>To integrate this tool with your LMS, use the following configuration URL:</p>
+					<div class="lti-url" id="config-url">Loading...</div>
+					<button 
+						hx-get="/api/config-url" 
+						hx-trigger="load, click"
+						hx-target="#config-url"
+						class="ednition-btn">
+						Copy URL
+					</button>
+				</div>
+				
+				<div class="info-section">
+					<h2>Canvas LMS Installation Instructions</h2>
+					
+					<p>Follow these steps to install this LTI Tool into your Canvas LMS:</p>
+					
+					<ol>
+						<li>
+							<strong>Log in as an Admin</strong> to your Canvas instance.
+						</li>
+						<li>
+							<strong>Navigate to Admin Settings</strong> by clicking on "Admin" in the global navigation menu.
+						</li>
+						<li>
+							<strong>Select your account</strong> from the list of accounts.
+						</li>
+						<li>
+							<strong>Click on "Settings"</strong> in the account navigation menu.
+						</li>
+						<li>
+							<strong>Click on the "Apps" tab</strong> at the top of the page.
+						</li>
+						<li>
+							<strong>Click the "+ App" button</strong> to add a new LTI tool.
+						</li>
+						<li>
+							<strong>Select "By URL"</strong> from the Configuration Type dropdown.
+						</li>
+						<li>
+							<strong>Fill in the form</strong> with the following information:
+							<ul>
+								<li><strong>Name:</strong> Ednition LTI Tool (or any name you prefer)</li>
+								<li><strong>Consumer Key:</strong> Leave blank (not used in LTI 1.3)</li>
+								<li><strong>Shared Secret:</strong> Leave blank (not used in LTI 1.3)</li>
+								<li><strong>Configuration URL:</strong> <code id="canvas-config-url">Loading...</code></li>
+							</ul>
+						</li>
+						<li>
+							<strong>Click "Submit"</strong>. Canvas will fetch the configuration from the provided URL.
+						</li>
+					</ol>
+					
+					<div class="note">
+						<strong>Note:</strong> For proper integration with Canvas, this tool now serves an XML configuration at the <code>/lti/config</code> endpoint. If you need a JSON configuration for other LMS platforms, use <code>/lti/config.json</code> instead.
+					</div>
+					
+					<div class="note">
+						<strong>Important:</strong> For production use, you must ensure this tool is hosted on a secure (HTTPS) domain that is accessible from your Canvas instance. For local development, you may need to use a tunneling service like ngrok.
+					</div>
+					
+					<h3>Using the Tool in Canvas</h3>
+					<p>Once installed, you can add the LTI Tool to your course:</p>
+					
+					<ol>
+						<li>
+							<strong>Navigate to a course</strong> where you want to use the tool.
+						</li>
+						<li>
+							<strong>Click on "Modules"</strong> (or where you want to add the tool).
+						</li>
+						<li>
+							<strong>Click the "+" button</strong> to add a new item to a module.
+						</li>
+						<li>
+							<strong>Select "External Tool"</strong> from the dropdown.
+						</li>
+						<li>
+							<strong>Find and select</strong> "Ednition LTI Tool" from the list of external tools.
+						</li>
+						<li>
+							<strong>Click "Add Item"</strong> to add the tool to your course.
+						</li>
+					</ol>
+					
+					<button 
+						hx-get="/api/config-url" 
+						hx-trigger="load"
+						hx-target="#canvas-config-url"
+						class="ednition-btn" style="display: none;">
+						Load Config URL
+					</button>
+				</div>
+				
+				<div class="info-section">
+					<h2>Features</h2>
+					<ul>
+						<li>LTI 1.3 compliant integration</li>
+						<li>OIDC authentication flow</li>
+						<li>Role-based welcome screen</li>
+						<li>HTMX for dynamic content</li>
+					</ul>
+				</div>
+				
+				<p>
+					<a href="https://github.com/EdnitionCode/lti-tool-demo" class="ednition-btn">View Source Code</a>
+				</p>
+			</div>
+		</main>
+	</body>
+	</html>
+}
+
+templ WelcomeView(data WelcomeData) {
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>Ednition LTI Tool</title>
+		<script src="https://unpkg.com/htmx.org@1.9.6"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+		@InlineCSS()
+	</head>
+	<body class="ednition-theme">
+		@Header()
+		
+		<main class="ednition-main">
+			<div class="container">
+				<div class="welcome-user">
+					<h2>Welcome to Ednition LTI Tool</h2>
+					<div class="user-info">
+						<p>Hello, <strong>{ data.Name }</strong>!</p>
+						<p>You are logged in as: <span class="role-badge">{ data.Role }</span></p>
+					</div>
+					<button hx-get="/api/greeting" hx-swap="innerHTML" hx-target="#message" class="ednition-btn">
+						Click for HTMX demo
+					</button>
+					<div id="message" class="message-container"></div>
+				</div>
+				
+				if data.LaunchInfo != nil {
+					// Form POST data section
+					if formData, ok := data.LaunchInfo["formData"].(map[string]interface{}); ok && len(formData) > 0 {
+						<div class="info-section">
+							<h2>Form POST Data</h2>
+							<pre style="background-color: var(--ednition-neutral-100); padding: 15px; border-radius: 8px; overflow: auto; max-height: 300px; font-family: monospace; font-size: 14px; white-space: pre-wrap; word-break: break-word;">
+								for key, value := range formData {
+									<div><strong>{ key }:</strong> { fmt.Sprintf("%v", value) }</div>
+								}
+							</pre>
+						</div>
+					}
+					
+					// LTI Claims section - show all launch info except formData
+					<div class="info-section">
+						<h2>LTI Claims</h2>
+						<pre style="background-color: var(--ednition-neutral-100); padding: 15px; border-radius: 8px; overflow: auto; max-height: 300px; font-family: monospace; font-size: 14px; white-space: pre-wrap; word-break: break-word;">
+							for key, value := range data.LaunchInfo {
+								if key != "formData" {
+									<div><strong>{ key }:</strong> { fmt.Sprintf("%v", value) }</div>
+								}
+							}
+						</pre>
+					</div>
+				}
+			</div>
+		</main>
+	</body>
+	</html>
+}
+
+templ GreetingComponent() {
+	<div class="greeting-message">
+		<h3>Hello from Ednition!</h3>
+		<p>This content was loaded dynamically via Templ and HTMX.</p>
+		<p>Ednition helps educational institutions leverage modern technologies for better learning experiences.</p>
+	</div>
+} 

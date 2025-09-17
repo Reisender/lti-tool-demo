@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SVG to PNG Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .converter {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        canvas {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="converter">
+        <h1>SVG to PNG Converter</h1>
+        <p>Click the button below to convert the SVG to PNG and download it.</p>
+        
+        <!-- SVG embedded directly -->
+        <svg id="ltiSvg" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="64" height="64" rx="8" fill="#3498DB"/>
+          <path d="M18 18H46V22H18V18Z" fill="white"/>
+          <path d="M18 28H46V32H18V28Z" fill="white"/>
+          <path d="M18 38H46V42H18V38Z" fill="white"/>
+          <circle cx="50" cy="48" r="6" fill="#E74C3C"/>
+          <text x="48" y="51" font-family="Arial" font-size="8" font-weight="bold" fill="white" text-anchor="middle">LTI</text>
+        </svg>
+        
+        <canvas id="canvas" width="64" height="64"></canvas>
+        <button id="convertBtn">Convert & Download PNG</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const svg = document.getElementById('ltiSvg');
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const convertBtn = document.getElementById('convertBtn');
+
+            // Function to convert SVG to PNG
+            function convertToPng() {
+                // Create an image from the SVG
+                const svgData = new XMLSerializer().serializeToString(svg);
+                const img = new Image();
+                const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+                const url = URL.createObjectURL(svgBlob);
+                
+                img.onload = function() {
+                    // Draw the image on the canvas
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    URL.revokeObjectURL(url);
+                    
+                    // Download the PNG
+                    const pngUrl = canvas.toDataURL('image/png');
+                    const downloadLink = document.createElement('a');
+                    downloadLink.download = 'lti-icon.png';
+                    downloadLink.href = pngUrl;
+                    downloadLink.click();
+                };
+                
+                img.src = url;
+            }
+            
+            // Attach click event to the button
+            convertBtn.addEventListener('click', convertToPng);
+            
+            // Draw SVG on canvas initially
+            const svgData = new XMLSerializer().serializeToString(svg);
+            const img = new Image();
+            const svgBlob = new Blob([svgData], {type: 'image/svg+xml;charset=utf-8'});
+            const url = URL.createObjectURL(svgBlob);
+            
+            img.onload = function() {
+                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                URL.revokeObjectURL(url);
+            };
+            
+            img.src = url;
+        });
+    </script>
+</body>
+</html> 

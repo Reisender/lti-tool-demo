@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="8" fill="#3498DB"/>
+  <path d="M18 18H46V22H18V18Z" fill="white"/>
+  <path d="M18 28H46V32H18V28Z" fill="white"/>
+  <path d="M18 38H46V42H18V38Z" fill="white"/>
+  <circle cx="50" cy="48" r="6" fill="#E74C3C"/>
+  <text x="48" y="51" font-family="Arial" font-size="8" font-weight="bold" fill="white" text-anchor="middle">LTI</text>
+</svg> 
